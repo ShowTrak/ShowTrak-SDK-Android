@@ -35,6 +35,19 @@ dependencies {
     api("io.socket:socket.io-client:2.1.0")
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ShowTrak/ShowTrak-SDK-Android")
+            credentials {
+                username = project.providers.gradleProperty("gprUser").orElse("").get()
+                password = project.providers.gradleProperty("gprToken").orElse("").get()
+            }
+        }
+    }
+}
+
 mavenPublishing {
     publishToMavenCentral()
     signAllPublications()

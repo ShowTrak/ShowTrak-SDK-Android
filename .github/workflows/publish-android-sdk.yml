@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   publish:
@@ -27,6 +28,8 @@ jobs:
       ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
       ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
       ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      ORG_GRADLE_PROJECT_gprUser: ${{ github.actor }}
+      ORG_GRADLE_PROJECT_gprToken: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Check out repository
@@ -74,5 +77,13 @@ jobs:
         run: >-
           ./gradlew
           publishAndReleaseToMavenCentral
+          -PVERSION_NAME=${{ steps.version.outputs.version }}
+          --stacktrace
+
+      - name: Publish to GitHub Packages
+        if: steps.version.outputs.dry_run != 'true'
+        run: >-
+          ./gradlew
+          :showtrak-sdk:publishMavenPublicationToGitHubPackagesRepository
           -PVERSION_NAME=${{ steps.version.outputs.version }}
           --stacktrace
