@@ -258,3 +258,18 @@ implementation(project(":showtrak-sdk"))
 ```
 
 This keeps a single SDK source of truth shared across repos.
+
+## Maven Central
+
+When the SDK is published, consume it like this:
+
+```kotlin
+repositories {
+	google()
+	mavenCentral()
+}
+
+dependencies {
+	implementation("io.github.showtrak:showtrak-sdk:0.1.0")
+}
+```
