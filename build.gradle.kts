@@ -7,5 +7,5 @@ plugins {
 
 allprojects {
     group = providers.gradleProperty("GROUP").orElse("io.github.showtrak").get()
-    version = providers.gradleProperty("VERSION_NAME").orElse("0.1.0-SNAPSHOT").get()
+    version = providers.gradleProperty("VERSION_NAME").orElse("1.0.2").get()
 }

@@ -270,6 +270,6 @@ repositories {
 }
 
 dependencies {
-	implementation("io.github.showtrak:showtrak-sdk:0.1.0")
+	implementation("io.github.showtrak:showtrak-sdk:1.0.2")
 }
 ```
