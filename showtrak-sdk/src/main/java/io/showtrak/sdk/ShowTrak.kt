@@ -7,7 +7,7 @@ import android.content.Context
  *
  * Typical usage:
  * ```
- * ShowTrak.connect(context, "10.0.0.10", 8000)            // ID auto-generated + persisted
+ * ShowTrak.connect(context, "10.0.0.10", 3000)            // ID auto-generated + persisted
  * ShowTrak.registerEvent("SetBoxRed", EventOptions("Set Box Red", colour = 0)) { ack ->
  *     // ... perform the action ...
  *     ack.success()

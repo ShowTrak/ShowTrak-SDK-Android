@@ -47,7 +47,7 @@ Supported connection states:
 ShowTrak.connect(
 	context = applicationContext,
 	ip = "10.0.2.2",
-	port = 8000,
+	port = 3000,
 	id = null
 )
 ```
